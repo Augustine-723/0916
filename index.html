@@ -1,84 +1,106 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f4f2eb" />
-    <title>Augustine — Personal page</title>
+    <title>augustine 官奕愷 — 個人頁面</title>
+    <meta name="description" content="我是官奕愷 augustine，通訊工程系。個人介紹、技能與即時時鐘。" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-      :root { color-scheme: light; font-family: 'DM Sans', sans-serif; color: #252b23; background: #f4f2eb; }
+      :root { color-scheme: light; font-family: 'DM Sans', 'Noto Sans TC', sans-serif; color: #252b23; background: #f4f2eb; }
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100svh; padding: 36px 6vw; display: flex; flex-direction: column; }
       header, footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
       .mark { width: 42px; height: 42px; display: grid; place-items: center; background: #293a2b; color: #f4f2eb; border-radius: 50%; font-size: 21px; font-weight: 600; }
       .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
       header .eyebrow { color: #74796e; }
-      main { width: 100%; max-width: 1150px; margin: auto; padding: 90px 0; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 70px; }
+      main { width: 100%; max-width: 1150px; margin: auto; padding: 60px 0; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 60px; }
       .intro > .eyebrow { display: flex; align-items: center; gap: 10px; }
       .dot { width: 7px; height: 7px; background: #729663; border-radius: 50%; display: inline-block; }
-      h1 { font-family: 'Manrope', sans-serif; font-size: clamp(54px, 6.5vw, 90px); font-weight: 500; letter-spacing: -5px; line-height: 1.1; margin: 30px 0 26px; }
+      h1 { font-family: 'Manrope', sans-serif; font-size: clamp(46px, 6vw, 80px); font-weight: 500; letter-spacing: -3px; line-height: 1.1; margin: 30px 0 26px; }
       h1 span { color: #718266; }
       .intro p { color: #777b70; font-size: 17px; line-height: 1.8; max-width: 310px; }
+      .avatar { display: block; width: 112px; height: 112px; object-fit: cover; border-radius: 50%; border: 5px solid #fffdf7; box-shadow: 0 6px 24px #293a2b12; margin-bottom: 26px; }
+      .department { display: inline-block; padding: 8px 14px; border: 1px solid #dce1d2; border-radius: 8px; font-size: 13px; color: #57664f; }
+      .intro .bio { color: #424e3b; font-size: 21px; margin-bottom: 5px; }
+      .intro .welcome { margin-top: 0; font-size: 14px; }
+      .side { min-width: 0; display: grid; gap: 24px; }
+      .skills { padding: 28px 32px; border: 1px solid #dedfd5; border-radius: 24px; background: #faf9f4; }
+      h2.eyebrow { margin: 0; font-size: 12px; }
+      .skill-list { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .skill-list li { border: 1px solid #dce1d2; border-radius: 30px; padding: 9px 14px; color: #526348; font-size: 13px; background: #eff1e8; }
       .little-line { margin-top: 42px; width: 48px; height: 2px; background: #a1ae90; }
-      .clock-card { position: relative; overflow: hidden; background: #e8ebdf; border: 1px solid #dce1d2; border-radius: 24px; min-height: 370px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; }
+      .clock-card { position: relative; overflow: hidden; background: #e8ebdf; border: 1px solid #dce1d2; border-radius: 24px; min-height: 300px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; }
       .card-top { display: flex; justify-content: space-between; align-items: center; z-index: 1; }
       .live { display: flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 1px; border: 1px solid #cbd3c0; border-radius: 20px; padding: 6px 10px; }
       .live .dot { width: 5px; height: 5px; }
       .clock-content { z-index: 1; margin: 38px 0; }
       .time-row { display: flex; align-items: baseline; gap: 9px; }
-      #time { font-family: 'Manrope', sans-serif; font-size: clamp(42px, 4.6vw, 66px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -3px; white-space: nowrap; }
-      #period { font-size: 13px; color: #69745f; }
+      #time { font-family: 'Manrope', sans-serif; font-size: clamp(32px, 3.6vw, 52px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -1px; white-space: nowrap; }
       #date { margin-top: 10px; font-size: 14px; color: #69745f; }
       .zone { border-top: 1px solid #cfd6c5; padding-top: 19px; font-size: 12px; color: #69745f; z-index: 1; display: flex; align-items: center; gap: 8px; }
       .orbit { position: absolute; height: 320px; width: 320px; border: 1px solid #d7dfcb; border-radius: 50%; top: -140px; right: -135px; }
       .orbit::after { content: ''; position: absolute; inset: 28px; border: 1px solid #d7dfcb; border-radius: 50%; }
       footer { border-top: 1px solid #dedfd5; padding-top: 22px; color: #85897e; font-size: 11px; }
-      footer span:last-child { display: flex; align-items: center; gap: 7px; }
-      @media (max-width: 760px) { body { padding: 24px; } main { grid-template-columns: 1fr; gap: 42px; padding: 65px 0; max-width: 480px; } h1 { letter-spacing: -3px; } .clock-card { min-height: 300px; padding: 26px; } #time { font-size: 56px; } footer { font-size: 10px; } }
-      @media (max-width: 360px) { #time { font-size: 45px; } .clock-card { padding: 20px; } }
+      footer > span:last-child { display: flex; align-items: center; gap: 7px; }
+      @media (max-width: 760px) { body { padding: 24px; } main { grid-template-columns: 1fr; gap: 42px; padding: 65px 0; max-width: 480px; } h1 { letter-spacing: -3px; } .clock-card { min-height: 300px; padding: 26px; } #time { font-size: clamp(32px, 8vw, 48px); } footer { font-size: 10px; } }
+      @media (max-width: 360px) { #time { font-size: 30px; } .clock-card { padding: 20px; } }
     </style>
   </head>
   <body>
-    <header><a class="mark" href="./" aria-label="Augustine home" style="text-decoration:none">a.</a><span class="eyebrow">A little corner of the internet</span></header>
+    <header><a class="mark" href="./" aria-label="Augustine home" style="text-decoration:none">a.</a><span class="eyebrow">我的個人小天地</span></header>
     <main>
       <section class="intro" aria-labelledby="name">
-        <div class="eyebrow"><span class="dot"></span> Hello, world</div>
-        <h1 id="name">I'm<br /><span>Augustine.</span></h1>
-        <p>Welcome to my personal space.<br />Glad you're here, in this moment.</p>
+        <img class="avatar" src="assets/shinchan-avatar.png" alt="蠟筆小新頭像" width="112" height="112" />
+        <div class="eyebrow"><span class="dot"></span> Profile / 關於我</div>
+        <h1 id="name">你好，我是<br /><span>augustine.</span></h1>
+        <span class="department">通訊工程系</span>
+        <p class="bio">我是官奕愷</p>
+        <p class="welcome">歡迎來到我的個人頁面。</p>
         <div class="little-line" aria-hidden="true"></div>
       </section>
-      <section class="clock-card" aria-label="Current local time">
-        <div class="orbit" aria-hidden="true"></div>
-        <div class="card-top"><span class="eyebrow">The present moment</span><span class="live"><span class="dot"></span>LIVE</span></div>
-        <div class="clock-content">
-          <div class="time-row"><time id="time">--:--:--</time><span id="period"></span></div>
-          <div id="date">Loading local time…</div>
-        </div>
-        <div class="zone"><span aria-hidden="true">◎</span><span id="zone">Your local timezone</span></div>
+      <div class="side">
+      <section class="skills" aria-labelledby="skills-title">
+        <h2 class="eyebrow" id="skills-title">Skills / 技能</h2>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>AI</li>
+          <li>Data Analysis</li>
+        </ul>
       </section>
+      <section class="clock-card" aria-labelledby="clock-title">
+        <div class="orbit" aria-hidden="true"></div>
+        <div class="card-top"><h2 class="eyebrow" id="clock-title">Live Clock / 即時時鐘</h2><span class="live"><span class="dot"></span>LIVE</span></div>
+        <div class="clock-content">
+          <div class="time-row"><time id="time">-- : -- : --</time></div>
+          <div id="date">正在載入當地時間…</div>
+        </div>
+        <div class="zone"><span aria-hidden="true">◎</span><span id="zone">瀏覽器所在時區</span></div>
+      </section>
+      </div>
     </main>
-    <footer><span>© <span id="year">2026</span> Augustine</span><span>A small space. A present moment.</span></footer>
+    <footer><span>© <span id="year">2026</span> Augustine</span><span>把握現在的每一刻。</span></footer>
     <script>
       const time = document.getElementById('time');
-      const period = document.getElementById('period');
       const date = document.getElementById('date');
-      const timeFormat = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-      const dateFormat = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      const timeFormat = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+      const dateFormat = new Intl.DateTimeFormat('zh-TW', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       document.getElementById('zone').textContent = timezone.replaceAll('_', ' ').replaceAll('/', ' / ');
       function updateClock() {
         const now = new Date();
         const parts = timeFormat.formatToParts(now);
-        time.textContent = parts.filter(part => ['hour', 'minute', 'second'].includes(part.type)).map(part => part.value).join(':');
+        time.textContent = parts.filter(part => ['hour', 'minute', 'second'].includes(part.type)).map(part => part.value).join(' : ');
         time.dateTime = now.toISOString();
-        period.textContent = parts.find(part => part.type === 'dayPeriod').value;
         date.textContent = dateFormat.format(now);
         document.getElementById('year').textContent = now.getFullYear();
       }
       updateClock();
       setInterval(updateClock, 1000);
+      document.addEventListener('visibilitychange', updateClock);
     </script>
   </body>
 </html>
