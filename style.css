@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root { color-scheme: light; font-family: 'DM Sans', 'Noto Sans TC', sans-serif; color: #252b23; background: #f4f2eb; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; padding: 36px 6vw; display: flex; flex-direction: column; }
+header, footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.mark { text-decoration: none; width: 42px; height: 42px; display: grid; place-items: center; background: #293a2b; color: #f4f2eb; border-radius: 50%; font-size: 21px; font-weight: 600; }
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+header .eyebrow { color: #74796e; }
+main { width: 100%; max-width: 1150px; margin: auto; padding: 60px 0; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 60px; }
+.intro > .eyebrow { display: flex; align-items: center; gap: 10px; }
+.dot { width: 7px; height: 7px; background: #729663; border-radius: 50%; display: inline-block; }
+h1 { font-family: 'Manrope', sans-serif; font-size: clamp(46px, 6vw, 80px); font-weight: 500; letter-spacing: -3px; line-height: 1.1; margin: 30px 0 26px; }
+h1 span { color: #718266; }
+.intro p { color: #777b70; font-size: 17px; line-height: 1.8; max-width: 310px; }
+.avatar { display: block; width: 112px; height: 112px; object-fit: cover; border-radius: 50%; border: 5px solid #fffdf7; box-shadow: 0 6px 24px #293a2b12; margin-bottom: 26px; }
+.department { display: inline-block; padding: 8px 14px; border: 1px solid #dce1d2; border-radius: 8px; font-size: 13px; color: #57664f; }
+.intro .bio { color: #424e3b; font-size: 21px; margin-bottom: 5px; }
+.intro .welcome { margin-top: 0; font-size: 14px; }
+.side { min-width: 0; display: grid; gap: 24px; }
+.skills { padding: 28px 32px; border: 1px solid #dedfd5; border-radius: 24px; background: #faf9f4; }
+h2.eyebrow { margin: 0; font-size: 12px; }
+.skill-list { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-list li { border: 1px solid #dce1d2; border-radius: 30px; padding: 9px 14px; color: #526348; font-size: 13px; background: #eff1e8; }
+.little-line { margin-top: 42px; width: 48px; height: 2px; background: #a1ae90; }
+.clock-card { position: relative; overflow: hidden; background: #e8ebdf; border: 1px solid #dce1d2; border-radius: 24px; min-height: 300px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; }
+.card-top { display: flex; justify-content: space-between; align-items: center; z-index: 1; }
+.live { display: flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 1px; border: 1px solid #cbd3c0; border-radius: 20px; padding: 6px 10px; }
+.live .dot { width: 5px; height: 5px; }
+.clock-content { z-index: 1; margin: 38px 0; }
+.time-row { display: flex; align-items: baseline; gap: 9px; }
+#time { font-family: 'Manrope', sans-serif; font-size: clamp(32px, 3.6vw, 52px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -1px; white-space: nowrap; }
+#date { margin-top: 10px; font-size: 14px; color: #69745f; }
+.zone { border-top: 1px solid #cfd6c5; padding-top: 19px; font-size: 12px; color: #69745f; z-index: 1; display: flex; align-items: center; gap: 8px; }
+.orbit { position: absolute; height: 320px; width: 320px; border: 1px solid #d7dfcb; border-radius: 50%; top: -140px; right: -135px; }
+.orbit::after { content: ''; position: absolute; inset: 28px; border: 1px solid #d7dfcb; border-radius: 50%; }
+footer { border-top: 1px solid #dedfd5; padding-top: 22px; color: #85897e; font-size: 11px; }
+footer > span:last-child { display: flex; align-items: center; gap: 7px; }
+@media (max-width: 760px) { body { padding: 24px; } main { grid-template-columns: 1fr; gap: 42px; padding: 65px 0; max-width: 480px; } h1 { letter-spacing: -3px; } .clock-card { min-height: 300px; padding: 26px; } #time { font-size: clamp(32px, 8vw, 48px); } footer { font-size: 10px; } }
+@media (max-width: 360px) { #time { font-size: 30px; } .clock-card { padding: 20px; } }
